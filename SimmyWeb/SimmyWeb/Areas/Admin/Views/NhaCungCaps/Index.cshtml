@@ -1,0 +1,155 @@
+﻿@model IEnumerable<SimmyWeb.Data.NhaCungCap>
+
+@{
+    ViewData["Title"] = "Danh sách nhà cung cấp";
+ 
+    Layout = "_AdminLayout";
+
+}
+
+<h2>Danh sách nhà cung cấp</h2>
+
+<div class="d-flex justify-content-between align-items-center">
+    <!-- Create button -->
+    <a href="@Url.Action("Create", "NhaCungCaps", new { area = "Admin" })" class="btn btn-primary">Tạo nhà cung cấp mới</a>
+
+    <!-- Form tìm kiếm -->
+    <form method="get" action="@Url.Action("Index")" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm nhà cung cấp" />
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    </form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên Nhà Cung Cấp</th>
+            <th>Số Điện Thoại</th>
+            <th>Địa Chỉ</th>
+            <th>Email</th>
+            <th>Ngày Tạo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TenNhaCungCap)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.MaNhaCungCap }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNhaCungCap }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNhaCungCap }, new { @class = "btn btn-warning btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .d-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-inline {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+        .form-inline .form-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-inline .form-control {
+            margin-right: 10px;
+            width: 300px;
+        }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        margin-right: 10px;
+        width: 100px; /* Đặt chiều rộng cố định cho tất cả các nút */
+        display: inline-block; /* Đảm bảo các nút được đặt trên cùng một dòng */
+        text-align: center; /* Căn giữa văn bản trong nút */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        font: 14px roboto;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+
+    .table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table th {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .table .actions a {
+        margin: 0; /* Bỏ khoảng cách giữa các nút */
+    }
+
+    /* Styling for the heading */
+    h2 {
+        font-size: 2.5rem; /* Larger font size for emphasis */
+        font-weight: 600; /* Semi-bold for a clean look */
+        color: #2c3e50; /* A modern dark blue color */
+        margin-bottom: 30px; /* Extra space below the heading */
+        text-align: left; /* Align to the left for a classic look */
+        border-bottom: 3px solid #3498db; /* Blue underline for a pop of color */
+        padding-bottom: 10px; /* Space between the text and the underline */
+    }
+</style>

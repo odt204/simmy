@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SimmyWeb.Data.SanPham>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h1>Danh sách sản phẩm</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <a href="@Url.Action("ChiTietSP", "Products", new { id = item.MaSanPham })">
+                            <!-- Ensure the image source is relative to the wwwroot folder -->
+                            <img src="~/images/@item.AnhSp" class="card-img-top" alt="@item.TenSanPham" />
+                            <h2>@item.GiaTienMoi VND</h2>
+                            <p>@item.TenSanPham</p>
+                        </a>
+                        <a href="@Url.Action("ChiTietSP", "Products", new { id = item.MaSanPham })" class="btn btn-default add-to-cart">
+                            <img src="~/images/AddCart.jpg" style="width: 20px; padding: 2px; margin-right: 2px;">Xem chi tiết đơn hàng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model SimmyWeb.Data.SanPham
+
+@{
+    ViewData["Title"] = "Chi Tiết Sản Phẩm";
+}
+
+<h1>Chi Tiết Sản Phẩm</h1>
+
+<div class="product-details">
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- Product Image with appropriate size -->
+            <img src="@Url.Content("~/images/" + @Model.AnhSp)" alt="@Model.TenSanPham" class="img-fluid product-image" />
+        </div>
+
+        <div class="col-sm-6">
+            <!-- Product Information -->
+            <h2>@Model.TenSanPham</h2>
+            <p><strong>Giá:</strong> @Model.GiaTienMoi VND</p>
+            <p><strong>Mô tả:</strong> @Model.MoTa</p>
+            <p><strong>Danh mục:</strong> @Model.MaDanhMucNavigation.TenDanhMuc</p>
+            <p><strong>Nhà cung cấp:</strong> @Model.MaNhaCungCapNavigation.TenNhaCungCap</p>
+            <p><strong>Ngày tạo:</strong> @Model.NgayTao.ToString("dd/MM/yyyy")</p>
+
+            <!-- Add to Cart Button -->
+            <form method="post" action="@Url.Action("AddToCart", "Cart")">
+                <input type="hidden" name="productId" value="@Model.MaSanPham" />
+                <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Back to Products List Button -->
+<a href="@Url.Action("Index", "Products")" class="btn btn-secondary mt-3">Quay lại danh sách sản phẩm</a>
+
+<style>
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+</style>

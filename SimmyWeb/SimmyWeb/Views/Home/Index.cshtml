@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Simmy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Về Simmy</h1>
+    </header>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="~/images/banner web2-03.jpg" />
+            </div>
+            <div class="slide">
+                <img src="~/images/banner web2-03.jpg" />
+            </div>
+            <div class="slide">
+                <img src="~/images/banner web2-03.jpg" />
+            </div>
+        </div>
+        <div class="slider-controls">
+            <span class="prev" onclick="moveSlide(-1)">&#10094;</span>
+            <span class="next" onclick="moveSlide(1)">&#10095;</span>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length; // Số lượng slide chính xác
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides; // Đảm bảo không vượt quá slide cuối
+            document.querySelector('.slider').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Tự động chuyển slide sau mỗi 4 giây
+        setInterval(() => {
+            moveSlide(1);
+        }, 4000);
+
+    </script>
+    <main>
+        <section class="about-simmy">
+            <div class="about-left">
+                <img src="~/images/Img_1.png" alt="Simmy Logo and Products">
+            </div>
+            <div class="about-right">
+                <h2>VỀ SIMMY</h2>
+                <p>
+                    Công ty TNHH THỦY SẢN SIMMY được thành lập vào năm 2006, chủ yếu sản xuất các mặt hàng thủy sản đông lạnh và thực phẩm chế biến. Hiện công ty có các thiết bị cấp đông như: IQF, CF, AIR BLAST, máy dập vảy, kho cấp đông, ...
+                </p>
+                <p>
+                    Vào năm 2008 công ty có thành lập vùng nuôi, chuyên tập trung nuôi tôm thẻ chân trắng. Hiện có 50 hecta ...
+                </p>
+            </div>
+        </section>
+
+        <section class="product-lines">
+            <h2>Các dòng sản phẩm</h2>
+            <ul>
+                <li>Tôm tươi: Tôm thẻ, Tôm sú.</li>
+                <li>Tôm luộc: Tôm hấp PD, Tôm sú JD, Tôm sú PTO.</li>
+                <li>Sản phẩm đã chế biến: Tôm dưới Tempura, Tôm viên phô mai Tempura, ...</li>
+            </ul>
+          
+        </section>
+    </main>
+</body>
+</html>
+
+            <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: #f8f8f8;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1, h2 {
+        color: #333;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    .about-simmy {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .about-left img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+    }
+
+    .about-right {
+        flex: 1;
+    }
+
+        .about-right p {
+            margin-bottom: 10px;
+        }
+
+    .btn {
+        display: inline-block;
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .product-lines ul {
+        margin: 20px 0;
+        padding: 0 20px;
+    }
+
+        .product-lines ul li {
+            list-style-type: disc;
+            margin-bottom: 8px;
+        }
+
+    .product-images img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .slider-container {
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        min-width: 100%;
+    }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+    .slider-controls .prev, .slider-controls .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .slider-controls .prev {
+        left: 10px;
+    }
+
+    .slider-controls .next {
+        right: 10px;
+    }
+            </style>
